@@ -1,0 +1,71 @@
+ext {
+
+    versions = [
+            androidxTest        : '1.4.0',
+            appCompat           : '1.4.1',
+            activity            : '1.5.1',
+            constraintLayout    : '2.1.4',
+            coroutinesAndroid   : '1.3.9',
+            coreKtx             : '1.7.0',
+            coreKtxTesting      : '2.1.0',
+            dagger              : '2.42',
+            gson                : '2.8.8',
+            jUnit               : '4.13.2',
+            kotlinx             : '1.6.4',
+            material            : '1.6.0',
+            navigation          : '2.4.2',
+            okHttp              : '4.9.0',
+            retrofit            : '2.9.0',
+            viewPager2          : '1.0.0',
+            androidxJunitVersion: '1.1.3',
+            splashscreen        : '1.0.0'
+    ]
+
+    androidx = [
+            androidxTest           : "androidx.test:core-ktx:${versions.androidxTest}",
+            appCompat              : "androidx.appcompat:appcompat:${versions.appCompat}",
+            activity               : "androidx.activity:activity-ktx:${versions.activity}",
+            androidxJunitVersion   : "androidx.test.ext:junit:${versions.androidxJunitVersion}",
+            constraintLayout       : "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+            coreKtx                : "androidx.core:core-ktx:${versions.coreKtx}",
+            coreKtxTesting         : "androidx.arch.core:core-testing:${versions.coreKtxTesting}",
+            navigationFragmentKtx  : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            navigationUIKtx        : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+            viewPager2             : "androidx.viewpager2:viewpager2:${versions.viewPager2}",
+            viewModelVersion       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewPager2}",
+            splashscreen           : "androidx.core:core-splashscreen:${versions.splashscreen}",
+    ]
+
+    google = [
+            dagger         : "com.google.dagger:dagger:${versions.dagger}",
+            daggerSupport  : "com.google.dagger:dagger-android-support:${versions.dagger}",
+            daggerCompiler : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            gson           : "com.google.code.gson:gson:${versions.gson}",
+            material       : "com.google.android.material:material:${versions.material}"
+    ]
+    jetbrains = [
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutinesAndroid}"
+    ]
+
+    jUnit = [
+            jUnit: "junit:junit:${versions.jUnit}"
+    ]
+
+    kotlinx = [
+            kotlinxCoroutinesTest   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinx}",
+            kotlinxCoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinx}",
+            kotlinxCoroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
+    ]
+
+    squareup = [
+            loggingInterceptor        : "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
+            retrofit                  : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            retrofitConverterGson     : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+            retrofitConverterSimpleXml: "com.squareup.retrofit2:converter-simplexml:${versions.retrofit}"
+    ]
+
+    module = [
+            core_ui          : ":core_ui"
+    ]
+}

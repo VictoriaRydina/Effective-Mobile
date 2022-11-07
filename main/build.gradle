@@ -1,20 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
 
 android {
+    namespace 'com.example.effectivemobile.main'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.effectivemobile"
         minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -38,14 +37,13 @@ android {
 dependencies {
 
     implementation project(module.core_ui)
-    implementation project(module.main)
 
+    implementation androidx.activity
     implementation androidx.appCompat
     implementation androidx.coreKtx
     implementation androidx.constraintLayout
     implementation androidx.navigationFragmentKtx
     implementation androidx.navigationUIKtx
-    implementation androidx.splashscreen
     implementation google.material
     implementation google.dagger
     kapt google.daggerCompiler

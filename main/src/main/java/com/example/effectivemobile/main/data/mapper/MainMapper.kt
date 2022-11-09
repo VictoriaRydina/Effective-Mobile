@@ -1,6 +1,6 @@
 package com.example.effectivemobile.main.data.mapper
 
-import com.example.effectivemobile.core_ui.Mapper
+import com.example.effectivemobile.core_ui.mapper.Mapper
 import com.example.effectivemobile.main.data.model.BestSellerItemDto
 import com.example.effectivemobile.main.data.model.HomeStoreItemDto
 import com.example.effectivemobile.main.data.model.MainDto

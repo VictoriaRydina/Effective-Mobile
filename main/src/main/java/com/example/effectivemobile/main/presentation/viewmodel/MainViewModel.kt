@@ -2,7 +2,7 @@ package com.example.effectivemobile.main.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.effectivemobile.core_ui.BaseViewModel
+import com.example.effectivemobile.core_ui.presentation.viewmodel.BaseViewModel
 import com.example.effectivemobile.main.domain.model.MainEntity
 import com.example.effectivemobile.main.domain.use_case.MainUseCase
 import kotlinx.coroutines.Dispatchers

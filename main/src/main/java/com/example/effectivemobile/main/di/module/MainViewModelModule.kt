@@ -1,7 +1,7 @@
 package com.example.effectivemobile.main.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.effectivemobile.core_ui.VMKey
+import com.example.effectivemobile.core_ui.presentation.viewmodel.VMKey
 import com.example.effectivemobile.main.data.api.MainApiService
 import com.example.effectivemobile.main.data.repository.MainRepositoryImpl
 import com.example.effectivemobile.main.data.source.MainDataSource

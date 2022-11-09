@@ -3,9 +3,9 @@ package com.example.effectivemobile.main.presentation.fragment
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.children
-import com.example.effectivemobile.core_ui.BaseViewModelFragment
-import com.example.effectivemobile.core_ui.observe
-import com.example.effectivemobile.core_ui.showToast
+import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
+import com.example.effectivemobile.core_ui.utils.observe
+import com.example.effectivemobile.core_ui.utils.showToast
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
 import com.example.effectivemobile.main.di.component.DaggerMainComponent

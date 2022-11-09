@@ -1,4 +1,4 @@
-package com.example.effectivemobile.core_ui
+package com.example.effectivemobile.core_ui.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

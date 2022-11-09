@@ -1,4 +1,4 @@
-package com.example.effectivemobile.core_ui
+package com.example.effectivemobile.core_ui.utils
 
 import android.widget.Toast
 import androidx.annotation.StringRes

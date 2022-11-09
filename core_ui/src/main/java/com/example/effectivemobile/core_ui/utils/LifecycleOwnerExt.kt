@@ -1,4 +1,4 @@
-package com.example.effectivemobile.core_ui
+package com.example.effectivemobile.core_ui.utils
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

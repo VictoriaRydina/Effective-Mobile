@@ -1,4 +1,4 @@
-package com.example.effectivemobile.core_ui
+package com.example.effectivemobile.core_ui.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,9 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
+import com.example.effectivemobile.core_ui.utils.observe
+import com.example.effectivemobile.core_ui.presentation.viewmodel.BaseViewModel
+import com.example.effectivemobile.core_ui.utils.showToast
 import javax.inject.Inject
 
 abstract class BaseViewModelFragment<VB : ViewBinding, VM : BaseViewModel>(

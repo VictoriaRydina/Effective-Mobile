@@ -1,4 +1,4 @@
-package com.example.effectivemobile.core_ui
+package com.example.effectivemobile.core_ui.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -11,6 +11,8 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.example.effectivemobile.core_ui.presentation.navigation.InternalDeepLink
+import com.example.effectivemobile.core_ui.R
 
 abstract class BaseFragment<VB : ViewBinding>(
     @LayoutRes private val layoutRes: Int,

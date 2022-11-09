@@ -3,7 +3,7 @@ package com.example.effectivemobile.di.component
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import com.example.effectivemobile.di.module.AppModule
-import com.example.effectivemobile.core_ui.ApplicationScope
+import com.example.effectivemobile.core_ui.di.scope.ApplicationScope
 import com.example.effectivemobile.presentation.activity.MainActivity
 import dagger.BindsInstance
 import dagger.Component

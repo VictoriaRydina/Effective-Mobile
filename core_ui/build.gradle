@@ -46,4 +46,5 @@ dependencies {
     implementation google.dagger
     kapt google.daggerCompiler
     implementation jUnit.jUnit
+    implementation squareup.retrofit
 }

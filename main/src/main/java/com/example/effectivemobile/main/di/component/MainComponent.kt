@@ -1,7 +1,7 @@
 package com.example.effectivemobile.main.di.component
 
 import com.example.effectivemobile.core_ui.ModuleScope
-import com.example.effectivemobile.main.MainFragment
+import com.example.effectivemobile.main.presentation.fragment.MainFragment
 import com.example.effectivemobile.main.di.deps.MainDeps
 import dagger.Component
 

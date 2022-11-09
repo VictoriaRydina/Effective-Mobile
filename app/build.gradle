@@ -51,4 +51,8 @@ dependencies {
     implementation google.dagger
     kapt google.daggerCompiler
     implementation jUnit.jUnit
+    implementation squareup.loggingInterceptor
+    implementation squareup.retrofit
+    implementation squareup.retrofitConverterGson
+    implementation squareup.retrofitConverterSimpleXml
 }

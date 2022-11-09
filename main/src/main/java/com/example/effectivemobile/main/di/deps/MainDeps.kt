@@ -1,3 +1,11 @@
 package com.example.effectivemobile.main.di.deps
 
-interface MainDeps
+import androidx.lifecycle.ViewModelProvider
+import retrofit2.Retrofit
+
+interface MainDeps {
+
+    val mainRetrofit: Retrofit
+
+    val mainViewModelFactory: ViewModelProvider.Factory
+}

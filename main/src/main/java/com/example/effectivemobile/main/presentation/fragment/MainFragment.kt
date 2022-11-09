@@ -1,16 +1,21 @@
-package com.example.effectivemobile.main
+package com.example.effectivemobile.main.presentation.fragment
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.children
-import com.example.effectivemobile.core_ui.BaseFragment
+import com.example.effectivemobile.core_ui.BaseViewModelFragment
+import com.example.effectivemobile.core_ui.observe
+import com.example.effectivemobile.core_ui.showToast
+import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
 import com.example.effectivemobile.main.di.component.DaggerMainComponent
 import com.example.effectivemobile.main.di.deps.MainDeps
+import com.example.effectivemobile.main.presentation.viewmodel.MainViewModel
 
-class MainFragment : BaseFragment<FragmentMainBinding>(
+class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
     R.layout.fragment_main,
-    FragmentMainBinding::inflate
+    FragmentMainBinding::inflate,
+    MainViewModel::class.java
 ) {
 
     override fun initComponent() {
@@ -29,7 +34,12 @@ class MainFragment : BaseFragment<FragmentMainBinding>(
                     clearChecking(child)
                 }
             }
+            observe(viewModel.mainLD){
+                showToast(it.best_seller.toString())
+                showToast(it.home_store.toString())
+            }
         }
+        viewModel.getProductInformation()
     }
 
     private fun clearChecking(currentChild: View) {

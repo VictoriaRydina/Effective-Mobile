@@ -3,13 +3,16 @@ package com.example.effectivemobile.main.presentation.fragment
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.children
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.utils.observe
-import com.example.effectivemobile.core_ui.utils.showToast
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
 import com.example.effectivemobile.main.di.component.DaggerMainComponent
 import com.example.effectivemobile.main.di.deps.MainDeps
+import com.example.effectivemobile.main.presentation.adapters.BestSellerAdapter
+import com.example.effectivemobile.main.presentation.adapters.HotSalesAdapter
 import com.example.effectivemobile.main.presentation.viewmodel.MainViewModel
 
 class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
@@ -17,6 +20,9 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
     FragmentMainBinding::inflate,
     MainViewModel::class.java
 ) {
+
+    private lateinit var hotSalesAdapter: HotSalesAdapter
+    private lateinit var bestSellerAdapter: BestSellerAdapter
 
     override fun initComponent() {
         DaggerMainComponent.factory()
@@ -28,18 +34,26 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         super.setUi()
         setUpCategory()
         setUpTitle()
+        viewModel.getProductInformation()
         with(binding) {
             categoryGroup.children.forEach { child ->
                 child.setOnClickListener {
                     clearChecking(child)
                 }
             }
-            observe(viewModel.mainLD){
-                showToast(it.best_seller.toString())
-                showToast(it.home_store.toString())
+            hotSalesAdapter = HotSalesAdapter()
+            bestSellerAdapter = BestSellerAdapter()
+            hotSalesRecycler.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            hotSalesRecycler.adapter = hotSalesAdapter
+            bestSellerRecycler.layoutManager =
+                GridLayoutManager(context, 2)
+            bestSellerRecycler.adapter = bestSellerAdapter
+            observe(viewModel.mainLD) {
+                hotSalesAdapter.submitList(it.home_store)
+                bestSellerAdapter.submitList(it.best_seller)
             }
         }
-        viewModel.getProductInformation()
     }
 
     private fun clearChecking(currentChild: View) {
@@ -51,8 +65,8 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         }
     }
 
-    private fun setUpTitle(){
-        with(binding){
+    private fun setUpTitle() {
+        with(binding) {
             titleHotSales.titleMain.setText(R.string.hot_sales)
             titleHotSales.buttonView.setText(R.string.see_more)
             titleBestSeller.titleMain.setText(R.string.best_seller)
@@ -60,8 +74,8 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         }
     }
 
-    private fun setUpCategory(){
-        with(binding){
+    private fun setUpCategory() {
+        with(binding) {
             computer.categoryTitle.setText(R.string.computer)
             health.categoryTitle.setText(R.string.health)
             books.categoryTitle.setText(R.string.books)

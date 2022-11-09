@@ -3,15 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@drawable/background_buy_button">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/phone_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/discount_phone_price"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/samsung" />
@@ -20,36 +30,39 @@
         android:id="@+id/phone_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="$1,047"
+        android:layout_marginStart="20dp"
+        android:elevation="4dp"
+        tools:text="$1,047"
         android:textColor="@color/dark_blue"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_image" />
+        app:layout_constraintBottom_toTopOf="@+id/phone_name"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/discount_phone_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="$1,500"
+        android:elevation="4dp"
+        tools:text="$1,500"
         android:textColor="#CCCCCC"
         android:textSize="10sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/phone_cost"
         app:layout_constraintStart_toEndOf="@+id/phone_cost" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/phone_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="Samsung Galaxy s20 Ultra"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="4dp"
+        tools:text="Samsung Galaxy s20 Ultra"
         android:textColor="@color/dark_blue"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_cost" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/like_button"
@@ -62,5 +75,6 @@
         android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vector" />
+        app:srcCompat="@drawable/vector"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

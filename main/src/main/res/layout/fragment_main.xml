@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_screens">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -137,12 +138,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hot_sales_recycler"
-                tools:listitem="@layout/item_hot_sales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                tools:listitem="@layout/item_hot_sales" />
 
             <include
                 android:id="@+id/title_best_seller"
@@ -153,11 +154,14 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/best_seller_recycler"
-                tools:listitem="@layout/item_best_seller"
-                android:layout_marginTop="16dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/background_screens"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/item_best_seller" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>

@@ -5,7 +5,7 @@ import com.example.effectivemobile.main.data.model.BestSellerItemDto
 import com.example.effectivemobile.main.data.model.HomeStoreItemDto
 import com.example.effectivemobile.main.data.model.MainDto
 import com.example.effectivemobile.main.domain.model.BestSellerItemEntity
-import com.example.effectivemobile.main.domain.model.HomeStoreItemEntity
+import com.example.effectivemobile.main.domain.model.HotSalesItemEntity
 import com.example.effectivemobile.main.domain.model.MainEntity
 import javax.inject.Inject
 
@@ -17,8 +17,8 @@ class MainMapper
         best_seller = input.best_seller.map { mapBestSeller(it) }
     )
 
-    private fun mapHomeStore(input: HomeStoreItemDto): HomeStoreItemEntity =
-        HomeStoreItemEntity(
+    private fun mapHomeStore(input: HomeStoreItemDto): HotSalesItemEntity =
+        HotSalesItemEntity(
             id = input.id,
             is_new = input.is_new,
             title = input.title,

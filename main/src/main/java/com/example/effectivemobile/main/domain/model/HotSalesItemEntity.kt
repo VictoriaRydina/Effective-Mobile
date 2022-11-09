@@ -1,6 +1,6 @@
 package com.example.effectivemobile.main.domain.model
 
-data class HomeStoreItemEntity(
+data class HotSalesItemEntity(
     val id: Int = 0,
     val is_new: Boolean = false,
     val title: String = "",

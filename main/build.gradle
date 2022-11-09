@@ -49,6 +49,7 @@ dependencies {
     kapt google.daggerCompiler
     implementation jUnit.jUnit
     implementation squareup.loggingInterceptor
+    implementation squareup.picasso
     implementation squareup.retrofit
     implementation squareup.retrofitConverterGson
     implementation squareup.retrofitConverterSimpleXml

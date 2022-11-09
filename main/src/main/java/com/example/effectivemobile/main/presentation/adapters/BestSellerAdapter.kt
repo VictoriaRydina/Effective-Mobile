@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.ItemBestSellerBinding
 import com.example.effectivemobile.main.domain.model.BestSellerItemEntity
 import com.squareup.picasso.Picasso
@@ -23,6 +24,9 @@ class BestSellerAdapter :
                 phoneCost.text = PREFIX + item.price_without_discount.toString()
                 discountPhonePrice.text = PREFIX + item.discount_price.toString()
                 phoneName.text = item.title
+                if(item.is_favorites){
+                    likeButton.setImageResource(R.drawable.painted_over_heart)
+                } else likeButton.setImageResource(R.drawable.orange_heart)
             }
         }
     }

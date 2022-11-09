@@ -6,7 +6,9 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
+import com.example.effectivemobile.core_ui.utils.invisible
 import com.example.effectivemobile.core_ui.utils.observe
+import com.example.effectivemobile.core_ui.utils.visible
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
 import com.example.effectivemobile.main.di.component.DaggerMainComponent
@@ -14,6 +16,7 @@ import com.example.effectivemobile.main.di.deps.MainDeps
 import com.example.effectivemobile.main.presentation.adapters.BestSellerAdapter
 import com.example.effectivemobile.main.presentation.adapters.HotSalesAdapter
 import com.example.effectivemobile.main.presentation.viewmodel.MainViewModel
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
     R.layout.fragment_main,
@@ -34,6 +37,7 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         super.setUi()
         setUpCategory()
         setUpTitle()
+        setupBottomSheetController()
         viewModel.getProductInformation()
         with(binding) {
             categoryGroup.children.forEach { child ->
@@ -87,6 +91,19 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
             books.categoryIcon.setImageResource(R.drawable.ic_books)
             computerTwo.categoryIcon.setImageResource(R.drawable.ic_computer)
             healthTwo.categoryIcon.setImageResource(R.drawable.ic_health)
+        }
+    }
+
+    private fun setupBottomSheetController() {
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.locatorBottomSheet)
+        binding.mainFilter.setOnClickListener {
+            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                binding.locatorBottomSheet.invisible()
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            } else {
+                binding.locatorBottomSheet.visible()
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
         }
     }
 }

@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/favorites_icon"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group__2_" />
+        app:srcCompat="@drawable/ic_person" />
 
     <ImageView
         android:id="@+id/favorites_icon"
@@ -51,5 +51,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/shop_icon"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vector__5_" />
+        app:srcCompat="@drawable/white_heart" />
 </androidx.constraintlayout.widget.ConstraintLayout>

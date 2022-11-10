@@ -175,10 +175,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/locatorBottomSheet"
+        android:id="@+id/main_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/background_bottom_sheet"
         android:elevation="8dp"
         android:visibility="invisible"
         app:behavior_draggable="true"

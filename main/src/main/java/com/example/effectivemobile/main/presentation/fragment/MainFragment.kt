@@ -95,14 +95,16 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
     }
 
     private fun setupBottomSheetController() {
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.locatorBottomSheet)
-        binding.mainFilter.setOnClickListener {
-            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                binding.locatorBottomSheet.invisible()
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-            } else {
-                binding.locatorBottomSheet.visible()
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        with(binding) {
+            val bottomSheetBehavior = BottomSheetBehavior.from(mainBottomSheet)
+            mainFilter.setOnClickListener {
+                if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                    mainBottomSheet.invisible()
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                } else {
+                    mainBottomSheet.visible()
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
             }
         }
     }

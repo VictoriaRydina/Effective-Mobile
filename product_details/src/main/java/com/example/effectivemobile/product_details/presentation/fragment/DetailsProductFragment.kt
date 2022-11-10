@@ -1,6 +1,8 @@
 package com.example.effectivemobile.product_details.presentation.fragment
 
+import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.ui.HorizontalMarginItemDecoration
@@ -9,7 +11,12 @@ import com.example.effectivemobile.product_details.databinding.FragmentDetailsPr
 import com.example.effectivemobile.product_details.di.component.DaggerDetailsProductComponent
 import com.example.effectivemobile.product_details.di.deps.DetailsProductDeps
 import com.example.effectivemobile.product_details.presentation.adapter.DetailsProductCarouselAdapter
+import com.example.effectivemobile.product_details.presentation.adapter.ModelDescriptionAdapter
+import com.example.effectivemobile.product_details.presentation.adapter.ModelDescriptionAdapter.Companion.DETAILS_FRAGMENT
+import com.example.effectivemobile.product_details.presentation.adapter.ModelDescriptionAdapter.Companion.FEATURES_FRAGMENT
+import com.example.effectivemobile.product_details.presentation.adapter.ModelDescriptionAdapter.Companion.SHOP_FRAGMENT
 import com.example.effectivemobile.product_details.presentation.viewmodel.DetailsProductViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.math.abs
 
 class DetailsProductFragment :
@@ -28,6 +35,14 @@ class DetailsProductFragment :
     override fun setUi() {
         super.setUi()
         initViewPager()
+        with(binding) {
+            detailsProductMagazineButton.setOnClickListener {
+                navigateTo(R.id.cartFragment)
+            }
+            detailsProductBackButton.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
     }
 
     private fun initViewPager() {
@@ -57,6 +72,22 @@ class DetailsProductFragment :
                 R.dimen.viewpager_current_item_horizontal_margin
             )
             detailsProductPager.addItemDecoration(itemDecoration)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val adapter = ModelDescriptionAdapter(childFragmentManager, lifecycle)
+        with(binding) {
+            modelDescriptionPager.adapter = adapter
+
+            TabLayoutMediator(detailsProductTabLayout, modelDescriptionPager) { tab, position ->
+                when (position) {
+                    SHOP_FRAGMENT -> tab.text = getString(R.string.shop)
+                    DETAILS_FRAGMENT -> tab.text = getString(R.string.details)
+                    FEATURES_FRAGMENT -> tab.text = getString(R.string.features)
+                }
+            }.attach()
         }
     }
 }

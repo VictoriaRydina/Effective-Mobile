@@ -10,15 +10,15 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/details_product_toolbar"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/details_product_back_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/background_clear_button"
         android:scaleType="centerInside"
@@ -33,8 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/product_details"
-        android:textSize="18sp"
         android:textColor="@color/dark_blue"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
         app:layout_constraintEnd_toStartOf="@+id/details_product_magazine_button"
         app:layout_constraintStart_toEndOf="@+id/details_product_back_button"
@@ -42,8 +42,8 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/details_product_magazine_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="36dp"
         android:background="@drawable/background_done_button"
         android:scaleType="centerInside"
@@ -66,9 +66,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
+        android:elevation="12dp"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/background_bottom_sheet"
         app:layout_constraintTop_toBottomOf="@+id/details_product_pager">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -76,13 +79,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include android:id="@+id/rating_details"
-                layout="@layout/item_title_and_rating"/>
+            <include
+                android:id="@+id/rating_details"
+                layout="@layout/item_title_and_rating" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/details_product_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                style="@style/DetailsTabLayout"
+                app:tabIndicatorColor="@color/orange" />
 
             <androidx.viewpager2.widget.ViewPager2
-                android:background="@color/white"
+                android:id="@+id/model_description_pager"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"/>
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_marginTop="24dp"
+                android:background="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 

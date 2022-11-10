@@ -63,7 +63,6 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
 
     private fun setUpBestSellerAdapter(): BestSellerAdapter {
         return BestSellerAdapter {
-            showToast("Navigate to details")
             navigateTo(InternalDeepLink.PRODUCT_DETAILS)
         }
     }

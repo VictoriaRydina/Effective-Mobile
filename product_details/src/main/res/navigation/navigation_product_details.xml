@@ -12,5 +12,13 @@
         android:label="DetailsProductFragment"
         tools:layout="@layout/fragment_details_product">
         <deepLink app:uri="@string/product_details_deepLink" />
+        <action
+            android:id="@+id/action_detailsProductFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.effectivemobile.product_details.presentation.fragment.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart"/>
 </navigation>

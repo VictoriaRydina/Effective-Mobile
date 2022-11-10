@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="main_screen_deepLink" translatable="false">"effectivemobile://main"</string>
+    <string name="product_details_deepLink" translatable="false">"effectivemobile://product_details"</string>
 </resources>

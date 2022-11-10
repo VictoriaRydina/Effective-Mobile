@@ -68,7 +68,8 @@ ext {
     ]
 
     module = [
-        core_ui: ":core_ui",
-        main   : ":main"
+        core_ui        : ":core_ui",
+        main           : ":main",
+        product_details: ":product_details"
     ]
 }

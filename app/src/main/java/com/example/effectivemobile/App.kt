@@ -7,9 +7,12 @@ import com.example.effectivemobile.di.component.DaggerAppComponent
 import com.example.effectivemobile.di.deps.AppDeps
 import retrofit2.Retrofit
 
-class App: Application(), AppDeps {
+class App : Application(), AppDeps {
 
     lateinit var appComponent: AppComponent
+
+    override val detailsProductViewModelFactory: ViewModelProvider.Factory
+        get() = appComponent.viewModelFactory()
 
     override val mainViewModelFactory: ViewModelProvider.Factory
         get() = appComponent.viewModelFactory()

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_product_details"
+    app:startDestination="@id/detailsProductFragment">
+
+    <fragment
+        android:id="@+id/detailsProductFragment"
+        android:name="com.example.effectivemobile.product_details.presentation.fragment.DetailsProductFragment"
+        android:label="DetailsProductFragment"
+        tools:layout="@layout/fragment_details_product">
+        <deepLink app:uri="@string/product_details_deepLink" />
+    </fragment>
+</navigation>

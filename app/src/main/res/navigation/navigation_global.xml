@@ -13,4 +13,5 @@
         tools:layout="@layout/fragment_main"/>
 
     <include app:graph="@navigation/navigation_main" />
+    <include app:graph="@navigation/navigation_product_details" />
 </navigation>

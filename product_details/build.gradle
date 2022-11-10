@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.effectivemobile.main'
+    namespace 'com.example.effectivemobile.product_details'
     compileSdk 33
 
     defaultConfig {

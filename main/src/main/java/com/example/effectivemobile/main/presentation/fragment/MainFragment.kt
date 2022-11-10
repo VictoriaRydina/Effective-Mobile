@@ -6,8 +6,10 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
+import com.example.effectivemobile.core_ui.presentation.navigation.InternalDeepLink
 import com.example.effectivemobile.core_ui.utils.invisible
 import com.example.effectivemobile.core_ui.utils.observe
+import com.example.effectivemobile.core_ui.utils.showToast
 import com.example.effectivemobile.core_ui.utils.visible
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
@@ -25,7 +27,7 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
 ) {
 
     private lateinit var hotSalesAdapter: HotSalesAdapter
-    private lateinit var bestSellerAdapter: BestSellerAdapter
+    private var bestSellerAdapter = setUpBestSellerAdapter()
 
     override fun initComponent() {
         DaggerMainComponent.factory()
@@ -46,7 +48,6 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
                 }
             }
             hotSalesAdapter = HotSalesAdapter()
-            bestSellerAdapter = BestSellerAdapter()
             hotSalesRecycler.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             hotSalesRecycler.adapter = hotSalesAdapter
@@ -57,6 +58,13 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
                 hotSalesAdapter.submitList(it.home_store)
                 bestSellerAdapter.submitList(it.best_seller)
             }
+        }
+    }
+
+    private fun setUpBestSellerAdapter(): BestSellerAdapter {
+        return BestSellerAdapter {
+            showToast("Navigate to details")
+            navigateTo(InternalDeepLink.PRODUCT_DETAILS)
         }
     }
 

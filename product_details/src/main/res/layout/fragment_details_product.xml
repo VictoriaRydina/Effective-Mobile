@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_screens">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/details_product_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/details_product_back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:background="@drawable/background_clear_button"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/details_product_toolbar"
+        app:layout_constraintTop_toTopOf="@+id/details_product_toolbar"
+        app:srcCompat="@drawable/ic_arrow_back"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/product_details"
+        android:textSize="18sp"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/details_product_magazine_button"
+        app:layout_constraintStart_toEndOf="@+id/details_product_back_button"
+        app:layout_constraintTop_toTopOf="@+id/details_product_toolbar" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/details_product_magazine_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/background_done_button"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/details_product_toolbar"
+        app:srcCompat="@drawable/layer_67"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/details_product_pager"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_product_toolbar" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/details_product_pager">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include android:id="@+id/rating_details"
+                layout="@layout/item_title_and_rating"/>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

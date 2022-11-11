@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/mark_pro_heavy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_new"
         tools:text="Iphone 12" />
@@ -44,6 +44,7 @@
         android:layout_marginTop="4dp"
         android:textColor="@color/white"
         android:textSize="12sp"
+        android:fontFamily="@font/mark_pro_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_phone_name"
         tools:text="Súper. Mega. Rápido." />
@@ -58,6 +59,7 @@
         android:background="@drawable/background_buy_button"
         android:gravity="center"
         android:text="@string/buy_now"
+        android:fontFamily="@font/mark_pro_bold"
         android:textColor="@color/black"
         android:textSize="12sp"
         android:visibility="visible"

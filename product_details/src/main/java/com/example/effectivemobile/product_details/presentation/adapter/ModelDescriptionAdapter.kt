@@ -4,6 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments.FeaturesFragment
+import com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments.DetailsFragment
+import com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments.ShopFragment
 
 class ModelDescriptionAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {

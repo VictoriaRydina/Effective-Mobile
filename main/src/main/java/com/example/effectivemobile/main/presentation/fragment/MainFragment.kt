@@ -41,12 +41,22 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         setUpTitle()
         setupBottomSheetController()
         viewModel.getProductInformation()
+        initRecyclersView()
+        setUpSomeButton()
         with(binding) {
             categoryGroup.children.forEach { child ->
                 child.setOnClickListener {
                     clearChecking(child)
                 }
             }
+            bottomNavView.shopIcon.setOnClickListener {
+                navigateTo(InternalDeepLink.SHOP)
+            }
+        }
+    }
+
+    private fun initRecyclersView() {
+        with(binding) {
             hotSalesAdapter = HotSalesAdapter()
             hotSalesRecycler.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -72,6 +82,29 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
             categoryGroup.children.forEach { child ->
                 if (child != currentChild)
                     (child as AppCompatImageButton).isPressed = false
+            }
+        }
+    }
+
+    private fun setUpSomeButton() {
+        with(binding) {
+            selectCategoryTitle.buttonView.setOnClickListener {
+                showToast("Navigate to see all categories")
+            }
+            titleHotSales.buttonView.setOnClickListener {
+                showToast("Navigate to see all Hot sales")
+            }
+            titleBestSeller.buttonView.setOnClickListener {
+                showToast("Navigate to see all Best sellers")
+            }
+            searchLayout.qrCodeButton.setOnClickListener {
+                showToast("Scan barcode")
+            }
+            bottomNavView.profileIcon.setOnClickListener {
+                showToast("Navigate to profile")
+            }
+            bottomNavView.favoritesIcon.setOnClickListener {
+                showToast("Navigate to favorites")
             }
         }
     }

@@ -30,6 +30,7 @@
             android:gravity="center"
             android:text="@string/filter_options"
             android:textSize="18sp"
+            android:fontFamily="@font/mark_pro_bold"
             android:textColor="@color/dark_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/toggleButton"
@@ -41,9 +42,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_done_button"
+            android:fontFamily="@font/mark_pro_bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textOff="@string/done"
             android:textOn="@string/done"
-            android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +60,8 @@
         android:layout_marginTop="24dp"
         android:text="@string/brand"
         android:textColor="@color/dark_blue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:fontFamily="@font/mark_pro_bold" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_width="match_parent"
@@ -71,7 +76,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/price"
         android:textColor="@color/dark_blue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:fontFamily="@font/mark_pro_bold" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_width="match_parent"
@@ -86,7 +92,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/size"
         android:textColor="@color/dark_blue"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:fontFamily="@font/mark_pro_bold" />
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_width="match_parent"

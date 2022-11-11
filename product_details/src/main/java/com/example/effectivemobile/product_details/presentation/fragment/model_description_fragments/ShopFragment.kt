@@ -1,4 +1,4 @@
-package com.example.effectivemobile.product_details.presentation.adapter
+package com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments
 
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseFragment
 import com.example.effectivemobile.product_details.R

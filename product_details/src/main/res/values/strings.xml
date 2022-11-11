@@ -9,4 +9,5 @@
     <string name="my_cart">My Cart</string>
     <string name="delivery">Delivery</string>
     <string name="total">Total</string>
+    <string name="sorry_this_feature_is_temporarily_unavailable">Sorry, this feature is temporarily unavailable</string>
 </resources>

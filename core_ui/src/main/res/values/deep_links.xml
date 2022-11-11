@@ -2,4 +2,5 @@
 <resources>
     <string name="main_screen_deepLink" translatable="false">"effectivemobile://main"</string>
     <string name="product_details_deepLink" translatable="false">"effectivemobile://product_details"</string>
+    <string name="shop_deepLink" translatable="false">"effectivemobile://product_details/shop"</string>
 </resources>

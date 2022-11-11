@@ -35,7 +35,7 @@
         tools:text="$1,047"
         android:textColor="@color/dark_blue"
         android:textSize="16sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/mark_pro_heavy"
         app:layout_constraintBottom_toTopOf="@+id/phone_name"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -47,6 +47,7 @@
         android:elevation="4dp"
         tools:text="$1,500"
         android:textColor="#CCCCCC"
+        android:fontFamily="@font/mark_pro_bold"
         android:textSize="10sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/phone_cost"
         app:layout_constraintStart_toEndOf="@+id/phone_cost" />
@@ -60,6 +61,7 @@
         android:elevation="4dp"
         tools:text="Samsung Galaxy s20 Ultra"
         android:textColor="@color/dark_blue"
+        android:fontFamily="@font/mark_pro_regular"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

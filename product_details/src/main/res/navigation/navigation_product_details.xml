@@ -20,5 +20,7 @@
         android:id="@+id/cartFragment"
         android:name="com.example.effectivemobile.product_details.presentation.fragment.CartFragment"
         android:label="CartFragment"
-        tools:layout="@layout/fragment_cart"/>
+        tools:layout="@layout/fragment_cart">
+        <deepLink app:uri="@string/shop_deepLink" />
+    </fragment>
 </navigation>

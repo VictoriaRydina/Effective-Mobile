@@ -14,7 +14,7 @@
         android:text="@string/select_category"
         android:textColor="@color/dark_blue"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/mark_pro_heavy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,6 +26,7 @@
         android:text="@string/view_all"
         android:textColor="@color/orange"
         android:textSize="16sp"
+        android:fontFamily="@font/mark_pro_regular"
         app:layout_constraintBaseline_toBaselineOf="@+id/title_main"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="TextContrastCheck" />

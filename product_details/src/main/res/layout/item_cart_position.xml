@@ -6,54 +6,54 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="42dp"
     android:layout_marginEnd="32dp"
-    android:layout_marginBottom="24dp"
     android:background="@color/dark_blue">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/cart_phone_image"
         android:layout_width="88dp"
         android:layout_height="88dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerInside"
         app:srcCompat="@drawable/samsung" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView13"
+        android:id="@+id/cart_item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="6dp"
         android:minLines="2"
-        android:text="Galaxy Note 20  Ultra"
+        tools:text="Galaxy Note 20  Ultra"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:fontFamily="@font/mark_pro_bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintBottom_toTopOf="@+id/cart_item_price"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintStart_toEndOf="@+id/cart_phone_image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView14"
+        android:id="@+id/cart_item_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="3dp"
-        android:text="$3000.00"
+        tools:text="$3000.00"
         android:textColor="@color/orange"
         android:textSize="20sp"
         android:fontFamily="@font/mark_pro_bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView6" />
+        app:layout_constraintStart_toEndOf="@+id/cart_phone_image" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="4dp"
-        android:text="0"
+        android:text="1"
         android:textSize="20sp"
         android:fontFamily="@font/mark_pro_bold"
         android:textColor="@color/white"

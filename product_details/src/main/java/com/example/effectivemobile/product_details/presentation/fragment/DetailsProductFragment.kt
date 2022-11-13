@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.ui.HorizontalMarginItemDecoration
+import com.example.effectivemobile.core_ui.utils.observe
 import com.example.effectivemobile.product_details.*
 import com.example.effectivemobile.product_details.databinding.FragmentDetailsProductBinding
 import com.example.effectivemobile.product_details.di.component.DaggerDetailsProductComponent
@@ -32,9 +33,12 @@ class DetailsProductFragment :
             .inject(this)
     }
 
+    private val detailsProductCarouselAdapter = DetailsProductCarouselAdapter()
+
     override fun setUi() {
         super.setUi()
         initViewPager()
+        viewModel.getProductDetails()
         with(binding) {
             detailsProductMagazineButton.setOnClickListener {
                 navigateTo(R.id.cartFragment)
@@ -42,13 +46,20 @@ class DetailsProductFragment :
             detailsProductBackButton.setOnClickListener {
                 findNavController().navigateUp()
             }
+            observe(viewModel.productDetailsLD) {
+                with(ratingDetails) {
+                    titlePhoneName.text = it.title
+                    ratingNumber.text = it.rating.toString()
+                    detailsProductCarouselAdapter.submitList(it.images)
+                }
+            }
         }
     }
 
     private fun initViewPager() {
         with(binding) {
             // MyRecyclerViewAdapter is an standard RecyclerView.Adapter :)
-            detailsProductPager.adapter = DetailsProductCarouselAdapter()
+            detailsProductPager.adapter = detailsProductCarouselAdapter
             // You need to retain one page on each side so that the next and previous items are visible
             detailsProductPager.offscreenPageLimit = 1
             // Add a PageTransformer that translates the next and previous items horizontally
@@ -80,7 +91,6 @@ class DetailsProductFragment :
         val adapter = ModelDescriptionAdapter(childFragmentManager, lifecycle)
         with(binding) {
             modelDescriptionPager.adapter = adapter
-
             TabLayoutMediator(detailsProductTabLayout, modelDescriptionPager) { tab, position ->
                 when (position) {
                     SHOP_FRAGMENT -> tab.text = getString(R.string.shop)

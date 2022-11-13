@@ -4,19 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.effectivemobile.product_details.DetailsProductItemEntity
 import com.example.effectivemobile.product_details.databinding.ItemCarouselBinding
 import com.squareup.picasso.Picasso
 
 class DetailsProductCarouselAdapter :
-    ListAdapter<DetailsProductItemEntity, DetailsProductCarouselAdapter.CarouselItemViewHolder>(
+    ListAdapter<String, DetailsProductCarouselAdapter.CarouselItemViewHolder>(
         DetailsProductDiffCallback()
     ) {
 
     class CarouselItemViewHolder(private val binding: ItemCarouselBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: DetailsProductItemEntity) {
-
+        fun bind(item: String) {
+            with(binding){
+                Picasso.get().load(item).into(detailsPicture)
+            }
         }
     }
 

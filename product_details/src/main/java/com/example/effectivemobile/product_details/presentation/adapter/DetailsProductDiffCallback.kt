@@ -1,19 +1,18 @@
 package com.example.effectivemobile.product_details.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.effectivemobile.product_details.DetailsProductItemEntity
 
-class DetailsProductDiffCallback : DiffUtil.ItemCallback<DetailsProductItemEntity>() {
+class DetailsProductDiffCallback : DiffUtil.ItemCallback<String>() {
 
     override fun areItemsTheSame(
-        oldItem: DetailsProductItemEntity,
-        newItem: DetailsProductItemEntity
+        oldItem: String,
+        newItem: String
     ) =
         oldItem == newItem
 
     override fun areContentsTheSame(
-        oldItem: DetailsProductItemEntity,
-        newItem: DetailsProductItemEntity
+        oldItem: String,
+        newItem: String
     ) =
         oldItem == newItem
 }

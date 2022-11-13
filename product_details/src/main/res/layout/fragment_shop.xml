@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mark_pro_regular"
-        android:text="Exynos 990"
+        tools:text="Exynos 990"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mark_pro_regular"
-        android:text="108 + 12 mp"
+        tools:text="108 + 12 mp"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mark_pro_regular"
-        android:text="8 GB"
+        tools:text="8 GB"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView4"
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mark_pro_regular"
-        android:text="256 GB"
+        tools:text="256 GB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
@@ -133,8 +133,8 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/background_category_selector"
         android:fontFamily="@font/mark_pro_heavy"
-        android:textOff="128gb"
-        android:textOn="128gb"
+        tools:textOff="128gb"
+        tools:textOn="128gb"
         app:layout_constraintEnd_toStartOf="@+id/appCompatToggleButton2"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -146,8 +146,8 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/background_category_selector"
         android:fontFamily="@font/mark_pro_heavy"
-        android:textOff="256gb"
-        android:textOn="256gb"
+        android:textOff="252gb"
+        android:textOn="252gb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -158,17 +158,15 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
         android:background="@drawable/background_done_button"
         android:fontFamily="@font/mark_pro_heavy"
         android:gravity="center"
-        android:text="Add to card             $1500"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:text="Add to card             $1500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

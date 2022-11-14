@@ -2,16 +2,16 @@ package com.example.effectivemobile.product_details.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effectivemobile.core_ui.presentation.adapter.BaseItemCallback
 import com.example.effectivemobile.product_details.databinding.ItemCartPositionBinding
 import com.example.effectivemobile.product_details.domain.model.BasketItemEntity
 import com.squareup.picasso.Picasso
 
 class CartRecyclerViewAdapter :
     ListAdapter<BasketItemEntity, CartRecyclerViewAdapter.CartItemViewHolder>(
-        HotSalesDiffCallback()
+        BaseItemCallback<BasketItemEntity>()
     ) {
 
     class CartItemViewHolder(private val binding: ItemCartPositionBinding) :
@@ -38,13 +38,4 @@ class CartRecyclerViewAdapter :
         )
         return CartItemViewHolder(binding)
     }
-}
-
-class HotSalesDiffCallback : DiffUtil.ItemCallback<BasketItemEntity>() {
-
-    override fun areItemsTheSame(oldItem: BasketItemEntity, newItem: BasketItemEntity) =
-        oldItem == newItem
-
-    override fun areContentsTheSame(oldItem: BasketItemEntity, newItem: BasketItemEntity) =
-        oldItem == newItem
 }

@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effectivemobile.core_ui.presentation.adapter.BaseItemCallback
 import com.example.effectivemobile.product_details.databinding.ItemCarouselBinding
 import com.squareup.picasso.Picasso
 
 class DetailsProductCarouselAdapter :
     ListAdapter<String, DetailsProductCarouselAdapter.CarouselItemViewHolder>(
-        DetailsProductDiffCallback()
+        BaseItemCallback<String>()
     ) {
 
     class CarouselItemViewHolder(private val binding: ItemCarouselBinding) :

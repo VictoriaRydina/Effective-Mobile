@@ -2,9 +2,9 @@ package com.example.effectivemobile.main.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effectivemobile.core_ui.presentation.adapter.BaseItemCallback
 import com.example.effectivemobile.core_ui.utils.visible
 import com.example.effectivemobile.main.databinding.ItemHotSalesBinding
 import com.example.effectivemobile.main.domain.model.HotSalesItemEntity
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 
 class HotSalesAdapter :
     ListAdapter<HotSalesItemEntity, HotSalesAdapter.HotSalesItemViewHolder>(
-        HotSalesDiffCallback()
+        BaseItemCallback<HotSalesItemEntity>()
     ) {
 
     class HotSalesItemViewHolder(private val binding: ItemHotSalesBinding) :
@@ -40,13 +40,4 @@ class HotSalesAdapter :
         )
         return HotSalesItemViewHolder(binding)
     }
-}
-
-class HotSalesDiffCallback : DiffUtil.ItemCallback<HotSalesItemEntity>() {
-
-    override fun areItemsTheSame(oldItem: HotSalesItemEntity, newItem: HotSalesItemEntity) =
-        oldItem == newItem
-
-    override fun areContentsTheSame(oldItem: HotSalesItemEntity, newItem: HotSalesItemEntity) =
-        oldItem == newItem
 }

@@ -2,9 +2,9 @@ package com.example.effectivemobile.main.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.effectivemobile.core_ui.presentation.adapter.BaseItemCallback
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.ItemBestSellerBinding
 import com.example.effectivemobile.main.domain.model.BestSellerItemEntity
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 
 class BestSellerAdapter(private val onItemClickListener: (BestSellerItemEntity) -> Unit) :
     ListAdapter<BestSellerItemEntity, BestSellerAdapter.BestSellerItemViewHolder>(
-        BestSellerDiffCallback()
+        BaseItemCallback<BestSellerItemEntity>()
     ) {
 
     class BestSellerItemViewHolder(private val binding: ItemBestSellerBinding) :
@@ -51,13 +51,4 @@ class BestSellerAdapter(private val onItemClickListener: (BestSellerItemEntity) 
     companion object {
         private const val PREFIX = "$"
     }
-}
-
-class BestSellerDiffCallback : DiffUtil.ItemCallback<BestSellerItemEntity>() {
-
-    override fun areItemsTheSame(oldItem: BestSellerItemEntity, newItem: BestSellerItemEntity) =
-        oldItem == newItem
-
-    override fun areContentsTheSame(oldItem: BestSellerItemEntity, newItem: BestSellerItemEntity) =
-        oldItem == newItem
 }

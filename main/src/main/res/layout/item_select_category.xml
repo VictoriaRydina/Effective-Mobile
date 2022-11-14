@@ -17,7 +17,7 @@
         android:id="@+id/category_title"
         style="@style/MainCategoryTextStyle"
         android:text="@string/phones"
-        android:textSize="12sp"
+        android:textSize="@dimen/small_text_size"
         android:fontFamily="@font/mark_pro_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

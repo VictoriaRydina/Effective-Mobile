@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.ui.HorizontalMarginItemDecoration
+import com.example.effectivemobile.core_ui.utils.invisible
 import com.example.effectivemobile.core_ui.utils.observe
 import com.example.effectivemobile.product_details.*
 import com.example.effectivemobile.product_details.databinding.FragmentDetailsProductBinding
@@ -18,7 +19,9 @@ import com.example.effectivemobile.product_details.presentation.adapter.ModelDes
 import com.example.effectivemobile.product_details.presentation.adapter.ModelDescriptionAdapter.Companion.SHOP_FRAGMENT
 import com.example.effectivemobile.product_details.presentation.viewmodel.DetailsProductViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlin.Float
 import kotlin.math.abs
+import kotlin.with
 
 class DetailsProductFragment :
     BaseViewModelFragment<FragmentDetailsProductBinding, DetailsProductViewModel>(
@@ -39,12 +42,26 @@ class DetailsProductFragment :
         super.setUi()
         initViewPager()
         viewModel.getProductDetails()
+        viewModel.getCartProductList()
         with(binding) {
             detailsProductMagazineButton.setOnClickListener {
                 navigateTo(R.id.cartFragment)
             }
             detailsProductBackButton.setOnClickListener {
                 findNavController().navigateUp()
+            }
+        }
+        setObserve()
+    }
+
+    private fun setObserve() {
+        with(binding) {
+            observe(viewModel.cartProductLD) {
+                if (it.basket.isEmpty()) {
+                    numberOfItemsInTheCart.invisible()
+                } else {
+                    numberOfItemsInTheCart.text = it.basket.size.toString()
+                }
             }
             observe(viewModel.productDetailsLD) {
                 with(ratingDetails) {

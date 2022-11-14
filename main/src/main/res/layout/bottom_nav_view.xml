@@ -6,13 +6,13 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_nav_view">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/explorer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="● Explorer"
+        android:layout_marginTop="@dimen/margin_16_dp"
+        android:layout_marginBottom="@dimen/margin_16_dp"
+        android:text="@string/explorer"
         android:fontFamily="@font/mark_pro_bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/shop_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/layer_67" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/profile_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_person" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/favorites_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

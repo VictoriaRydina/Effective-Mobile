@@ -7,10 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.presentation.navigation.InternalDeepLink
-import com.example.effectivemobile.core_ui.utils.invisible
-import com.example.effectivemobile.core_ui.utils.observe
-import com.example.effectivemobile.core_ui.utils.showToast
-import com.example.effectivemobile.core_ui.utils.visible
+import com.example.effectivemobile.core_ui.utils.*
 import com.example.effectivemobile.main.R
 import com.example.effectivemobile.main.databinding.FragmentMainBinding
 import com.example.effectivemobile.main.di.component.DaggerMainComponent
@@ -47,6 +44,7 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
             categoryGroup.children.forEach { child ->
                 child.setOnClickListener {
                     clearChecking(child)
+                    child.isPressed = true
                 }
             }
             bottomNavView.shopIcon.setOnClickListener {

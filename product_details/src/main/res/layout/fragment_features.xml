@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView16"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/feature_sorry_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/margin_32_dp"
+        android:layout_marginEnd="@dimen/margin_32_dp"
         android:fontFamily="@font/mark_pro_heavy"
         android:text="@string/sorry_this_feature_is_temporarily_unavailable"
         android:textColor="@color/dark_blue"
-        android:textSize="34sp"
+        android:textSize="@dimen/text_size_34_sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

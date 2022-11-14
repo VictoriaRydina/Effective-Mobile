@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
             android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/toolbar_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -37,7 +37,7 @@
             android:id="@+id/main_locator_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="@dimen/margin_12_dp"
             android:entries="@array/city_names"
             app:layout_constraintBottom_toBottomOf="@+id/main_toolbar"
             app:layout_constraintEnd_toStartOf="@+id/main_toolbar"
@@ -50,9 +50,9 @@
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/main_filter"
             android:background="@color/background_screens"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_width="@dimen/margin_32_dp"
+            android:layout_height="@dimen/margin_32_dp"
+            android:layout_marginEnd="@dimen/margin_32_dp"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/main_toolbar"
             app:layout_constraintEnd_toEndOf="@+id/main_toolbar"
@@ -77,14 +77,14 @@
                     layout="@layout/item_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="@dimen/margin_8_dp" />
 
                 <HorizontalScrollView
                     android:id="@+id/horizontal_scroll_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="@dimen/margin_28_dp"
+                    android:layout_marginTop="@dimen/margin_12_dp"
                     android:overScrollMode="never"
                     android:scrollbars="none">
 
@@ -125,20 +125,20 @@
                     layout="@layout/item_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="24dp" />
+                    android:layout_marginTop="@dimen/margin_24_dp" />
 
                 <include
                     android:id="@+id/title_hot_sales"
                     layout="@layout/item_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="24dp" />
+                    android:layout_marginTop="@dimen/margin_24_dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/hot_sales_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/margin_8_dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_hot_sales" />
@@ -148,14 +148,14 @@
                     layout="@layout/item_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="@dimen/margin_12_dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/best_seller_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="@dimen/margin_12_dp"
+                    android:layout_marginBottom="@dimen/margin_12_dp"
                     android:background="@color/background_screens"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="2"
@@ -183,7 +183,7 @@
         android:visibility="invisible"
         app:behavior_draggable="true"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="28dp"
+        app:behavior_peekHeight="0dp"
         app:layout_behavior="@string/bottom_sheet_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

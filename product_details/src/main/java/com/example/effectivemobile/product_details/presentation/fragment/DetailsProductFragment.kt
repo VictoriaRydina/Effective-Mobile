@@ -11,6 +11,7 @@ import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFr
 import com.example.effectivemobile.core_ui.ui.HorizontalMarginItemDecoration
 import com.example.effectivemobile.core_ui.utils.invisible
 import com.example.effectivemobile.core_ui.utils.showToast
+import com.example.effectivemobile.core_ui.utils.visible
 import com.example.effectivemobile.network.base.error.ErrorEntity
 import com.example.effectivemobile.product_details.*
 import com.example.effectivemobile.product_details.databinding.FragmentDetailsProductBinding
@@ -86,6 +87,7 @@ class DetailsProductFragment :
                     if (cartProduct.basket.isEmpty()) {
                         numberOfItemsInTheCart.invisible()
                     } else {
+                        numberOfItemsInTheCart.visible()
                         numberOfItemsInTheCart.text = cartProduct.basket.size.toString()
                     }
                 }

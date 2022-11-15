@@ -10,16 +10,16 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/details_product_toolbar"
         android:layout_width="0dp"
-        android:layout_height="64dp"
+        android:layout_height="@dimen/toolbar_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/details_product_back_button"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="@dimen/margin_36_dp"
+        android:layout_height="@dimen/margin_36_dp"
+        android:layout_marginStart="@dimen/margin_40_dp"
         android:background="@drawable/background_clear_button"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
@@ -30,12 +30,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/number_of_items_in_the_cart"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/margin_20_dp"
+        android:layout_height="@dimen/margin_20_dp"
         android:background="@drawable/selected_category"
         android:elevation="10dp"
         android:gravity="center"
         android:textColor="@color/white"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/details_product_magazine_button"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="0" />
@@ -46,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="@string/product_details"
         android:textColor="@color/dark_blue"
-        android:textSize="18sp"
+        android:textSize="@dimen/biggest_text_size"
         android:fontFamily="@font/mark_pro_bold"
         app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
         app:layout_constraintEnd_toStartOf="@+id/details_product_magazine_button"
@@ -55,9 +56,9 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/details_product_magazine_button"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="36dp"
+        android:layout_width="@dimen/margin_36_dp"
+        android:layout_height="@dimen/margin_36_dp"
+        android:layout_marginEnd="@dimen/margin_36_dp"
         android:background="@drawable/background_done_button"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@+id/details_product_toolbar"
@@ -78,8 +79,8 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:elevation="12dp"
+        android:layout_marginTop="@dimen/margin_12_dp"
+        android:elevation="@dimen/margin_12_dp"
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,8 +101,8 @@
                 android:id="@+id/details_product_tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="@dimen/margin_32_dp"
+                android:layout_marginEnd="@dimen/margin_32_dp"
                 style="@style/DetailsTabLayout"
                 app:tabIndicatorColor="@color/orange" />
 
@@ -110,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/margin_24_dp"
                 android:background="@color/white" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>

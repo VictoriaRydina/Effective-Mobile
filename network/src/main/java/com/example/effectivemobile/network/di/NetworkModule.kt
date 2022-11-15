@@ -11,10 +11,6 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {
-    companion object {
-        private const val BASE_URL = "https://run.mocky.io/"
-        private const val DEFAULT_OK_HTTP_TIMEOUT: Long = 30000 // 30 sec
-    }
 
     @Provides
     fun provideSampleDataRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -40,5 +36,10 @@ class NetworkModule {
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    companion object {
+        private const val BASE_URL = "https://run.mocky.io/"
+        private const val DEFAULT_OK_HTTP_TIMEOUT: Long = 5000
     }
 }

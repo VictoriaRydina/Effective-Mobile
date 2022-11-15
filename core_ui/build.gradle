@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation project (module.network)
 
     implementation androidx.activity
     implementation androidx.appCompat

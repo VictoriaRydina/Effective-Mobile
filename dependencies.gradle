@@ -76,6 +76,7 @@ ext {
     module = [
         core_ui        : ":core_ui",
         main           : ":main",
+        network        : ":network",
         product_details: ":product_details"
     ]
 }

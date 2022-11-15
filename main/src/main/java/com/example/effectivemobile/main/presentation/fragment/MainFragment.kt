@@ -3,6 +3,9 @@ package com.example.effectivemobile.main.presentation.fragment
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.children
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
@@ -15,6 +18,8 @@ import com.example.effectivemobile.main.di.deps.MainDeps
 import com.example.effectivemobile.main.presentation.adapters.BestSellerAdapter
 import com.example.effectivemobile.main.presentation.adapters.HotSalesAdapter
 import com.example.effectivemobile.main.presentation.viewmodel.MainViewModel
+import com.example.effectivemobile.main.presentation.viewmodel.ViewState
+import com.example.effectivemobile.network.base.error.ErrorEntity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
@@ -37,8 +42,8 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         setUpCategory()
         setUpTitle()
         setupBottomSheetController()
+        viewModel.setIdleState()
         viewModel.getProductInformation()
-        initRecyclersView()
         setUpSomeButton()
         with(binding) {
             categoryGroup.children.forEach { child ->
@@ -53,19 +58,46 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
         }
     }
 
-    private fun initRecyclersView() {
-        with(binding) {
-            hotSalesAdapter = HotSalesAdapter()
-            hotSalesRecycler.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            hotSalesRecycler.adapter = hotSalesAdapter
-            bestSellerRecycler.layoutManager =
-                GridLayoutManager(context, 2)
-            bestSellerRecycler.adapter = bestSellerAdapter
-            observe(viewModel.mainLD) {
-                hotSalesAdapter.submitList(it.home_store)
-                bestSellerAdapter.submitList(it.best_seller)
+    override fun setObservers() {
+        super.setObservers()
+        lifecycleScope.launchWhenCreated {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    renderState(state)
+                }
             }
+        }
+    }
+
+    private fun renderState(state: ViewState) {
+        when (state) {
+            is ViewState.MainReceivedState -> {
+                val bestSeller = state.data.best_seller
+                val homeStore = state.data.home_store
+                with(binding) {
+                    hotSalesAdapter = HotSalesAdapter()
+                    hotSalesRecycler.layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    hotSalesRecycler.adapter = hotSalesAdapter
+                    bestSellerRecycler.layoutManager =
+                        GridLayoutManager(context, 2)
+                    bestSellerRecycler.adapter = bestSellerAdapter
+                    hotSalesAdapter.submitList(homeStore)
+                    bestSellerAdapter.submitList(bestSeller)
+                }
+            }
+            is ViewState.ErrorState -> {
+                when (state.data) {
+                    is ErrorEntity.NoConnectionError -> {
+                        showToast(state.data.localizedMessage ?: "No Connection Error")
+                    }
+                    is ErrorEntity.InternalServerError -> {
+                        showToast(state.data.localizedMessage ?: "Internal Server Error")
+                    }
+                    else -> showToast(state.data.localizedMessage ?: "Network exception")
+                }
+            }
+            else -> Unit
         }
     }
 

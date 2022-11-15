@@ -1,13 +1,17 @@
 package com.example.effectivemobile.product_details.presentation.fragment
 
 import android.view.View
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.effectivemobile.core_ui.presentation.adapter.BaseViewPagerAdapter
 import com.example.effectivemobile.core_ui.presentation.fragment.BaseViewModelFragment
 import com.example.effectivemobile.core_ui.ui.HorizontalMarginItemDecoration
 import com.example.effectivemobile.core_ui.utils.invisible
-import com.example.effectivemobile.core_ui.utils.observe
+import com.example.effectivemobile.core_ui.utils.showToast
+import com.example.effectivemobile.network.base.error.ErrorEntity
 import com.example.effectivemobile.product_details.*
 import com.example.effectivemobile.product_details.databinding.FragmentDetailsProductBinding
 import com.example.effectivemobile.product_details.di.component.DaggerDetailsProductComponent
@@ -17,6 +21,7 @@ import com.example.effectivemobile.product_details.presentation.fragment.model_d
 import com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments.FeaturesFragment
 import com.example.effectivemobile.product_details.presentation.fragment.model_description_fragments.ShopFragment
 import com.example.effectivemobile.product_details.presentation.viewmodel.DetailsProductViewModel
+import com.example.effectivemobile.product_details.presentation.viewmodel.ViewState
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlin.Float
 import kotlin.math.abs
@@ -40,6 +45,7 @@ class DetailsProductFragment :
     override fun setUi() {
         super.setUi()
         setUpPageTransformerAndItemDecorator()
+        viewModel.setIdleState()
         viewModel.getProductDetails()
         viewModel.getCartProductList()
         with(binding) {
@@ -51,25 +57,51 @@ class DetailsProductFragment :
             }
         }
         initModelDescriptionPager()
-        setObserve()
     }
 
-    private fun setObserve() {
-        with(binding) {
-            observe(viewModel.cartProductLD) {
-                if (it.basket.isEmpty()) {
-                    numberOfItemsInTheCart.invisible()
-                } else {
-                    numberOfItemsInTheCart.text = it.basket.size.toString()
+    override fun setObservers() {
+        super.setObservers()
+        lifecycleScope.launchWhenCreated {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    renderState(state)
                 }
             }
-            observe(viewModel.productDetailsLD) {
-                with(ratingDetails) {
-                    titlePhoneName.text = it.title
-                    ratingNumber.text = it.rating.toString()
-                    detailsProductCarouselAdapter.submitList(it.images)
+        }
+    }
+
+    private fun renderState(state: ViewState) {
+        when (state) {
+            is ViewState.ProductDetailsState -> {
+                val productDetails = state.data
+                with(binding.ratingDetails) {
+                    titlePhoneName.text = productDetails.title
+                    ratingNumber.text = productDetails.rating.toString()
+                    detailsProductCarouselAdapter.submitList(productDetails.images)
                 }
             }
+            is ViewState.CartProductState -> {
+                val cartProduct = state.data
+                with(binding) {
+                    if (cartProduct.basket.isEmpty()) {
+                        numberOfItemsInTheCart.invisible()
+                    } else {
+                        numberOfItemsInTheCart.text = cartProduct.basket.size.toString()
+                    }
+                }
+            }
+            is ViewState.ErrorState -> {
+                when (state.data) {
+                    is ErrorEntity.NoConnectionError -> {
+                        showToast(state.data.localizedMessage ?: "No Connection Error")
+                    }
+                    is ErrorEntity.InternalServerError -> {
+                        showToast(state.data.localizedMessage ?: "Internal Server Error")
+                    }
+                    else -> showToast(state.data.localizedMessage ?: "Network exception")
+                }
+            }
+            else -> Unit
         }
     }
 

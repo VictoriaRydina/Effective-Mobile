@@ -16,4 +16,5 @@ rootProject.name = "Effective Mobile"
 include ':app'
 include ':core_ui'
 include ':main'
+include ':network'
 include ':product_details'

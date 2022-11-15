@@ -1,15 +1,13 @@
 package com.example.effectivemobile.product_details.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import com.example.effectivemobile.core_ui.core_network.*
 import com.example.effectivemobile.core_ui.presentation.viewmodel.BaseViewModel
 import com.example.effectivemobile.product_details.domain.model.CartProductEntity
 import com.example.effectivemobile.product_details.domain.model.ProductDetailsEntity
 import com.example.effectivemobile.product_details.domain.use_case.CartProductUseCase
 import com.example.effectivemobile.product_details.domain.use_case.ProductDetailsUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class DetailsProductViewModel
@@ -18,24 +16,40 @@ class DetailsProductViewModel
     private val cartProductUseCase: CartProductUseCase
 ) : BaseViewModel() {
 
-    val productDetailsLD: MutableLiveData<ProductDetailsEntity> = MutableLiveData()
-    val cartProductLD: MutableLiveData<CartProductEntity> = MutableLiveData()
+    private val _state = MutableStateFlow<ViewState>(ViewState.IdleState)
+    val state: StateFlow<ViewState> get() = _state
 
     fun getProductDetails() {
-        viewModelScope.launch {
-            val model = withContext(Dispatchers.IO) {
+        networkExecutor<ProductDetailsEntity> {
+            execute {
                 productDetailsUseCase.getProductDetailsModel()
             }
-            productDetailsLD.value = model
+            success {
+                _state.value = ViewState.ProductDetailsState(it)
+            }
+            error {
+                _state.value = ViewState.ErrorState(it)
+            }
+            loading(_loading)
         }
     }
 
     fun getCartProductList() {
-        viewModelScope.launch {
-            val model = withContext(Dispatchers.IO) {
+        networkExecutor<CartProductEntity> {
+            execute {
                 cartProductUseCase.getCartProductModel()
             }
-            cartProductLD.value = model
+            success {
+                _state.value = ViewState.CartProductState(it)
+            }
+            error {
+                _state.value = ViewState.ErrorState(it)
+            }
+            loading(_loading)
         }
+    }
+
+    fun setIdleState() {
+        _state.value = ViewState.IdleState
     }
 }

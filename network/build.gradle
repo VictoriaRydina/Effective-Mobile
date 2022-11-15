@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.effectivemobile.main'
+    namespace 'com.example.effectivemobile.network'
     compileSdk 33
 
     defaultConfig {
@@ -36,13 +36,9 @@ android {
 
 dependencies {
 
-    implementation project(module.core_ui)
-    implementation project (module.network)
-
     implementation androidx.activity
     implementation androidx.appCompat
     implementation androidx.coreKtx
-    implementation androidx.constraintLayout
     implementation androidx.navigationFragmentKtx
     implementation androidx.navigationUIKtx
     implementation google.material
@@ -50,7 +46,6 @@ dependencies {
     kapt google.daggerCompiler
     implementation jUnit.jUnit
     implementation squareup.loggingInterceptor
-    implementation squareup.picasso
     implementation squareup.retrofit
     implementation squareup.retrofitConverterGson
     implementation squareup.retrofitConverterSimpleXml

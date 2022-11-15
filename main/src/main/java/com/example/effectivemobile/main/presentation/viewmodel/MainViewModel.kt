@@ -1,28 +1,37 @@
 package com.example.effectivemobile.main.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import com.example.effectivemobile.core_ui.core_network.*
 import com.example.effectivemobile.core_ui.presentation.viewmodel.BaseViewModel
 import com.example.effectivemobile.main.domain.model.MainEntity
 import com.example.effectivemobile.main.domain.use_case.MainUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class MainViewModel
 @Inject constructor(
     private val mainUseCase: MainUseCase
-): BaseViewModel() {
+) : BaseViewModel() {
 
-    val mainLD: MutableLiveData<MainEntity> = MutableLiveData()
+    private val _state = MutableStateFlow<ViewState>(ViewState.IdleState)
+    val state: StateFlow<ViewState> get() = _state
 
     fun getProductInformation() {
-        viewModelScope.launch {
-            val model = withContext(Dispatchers.IO) {
+        networkExecutor<MainEntity> {
+            execute {
                 mainUseCase.getMainModel()
             }
-            mainLD.value = model
+            success {
+                _state.value = ViewState.MainReceivedState(it)
+            }
+            error {
+                _state.value = ViewState.ErrorState(it)
+            }
+            loading(_loading)
         }
+    }
+
+    fun setIdleState() {
+        _state.value = ViewState.IdleState
     }
 }

@@ -40,6 +40,7 @@ dependencies {
 
     implementation project(module.core_ui)
     implementation project(module.main)
+    implementation project(module.network)
     implementation project(module.product_details)
 
     implementation androidx.appCompat

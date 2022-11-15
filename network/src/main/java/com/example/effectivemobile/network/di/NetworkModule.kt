@@ -1,4 +1,4 @@
-package com.example.effectivemobile.di.module
+package com.example.effectivemobile.network.di
 
 import android.content.Context
 import dagger.Module
